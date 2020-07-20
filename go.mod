@@ -16,6 +16,8 @@ require (
 	github.com/go-sql-driver/mysql v1.4.1
 	github.com/golang/protobuf v1.3.2 // indirect
 	github.com/google/uuid v1.1.1
+	github.com/graphql-go/graphql v0.7.9
+	github.com/graphql-go/handler v0.2.3
 	github.com/jinzhu/gorm v1.9.10
 	github.com/json-iterator/go v1.1.8 // indirect
 	github.com/mailru/easyjson v0.7.1 // indirect

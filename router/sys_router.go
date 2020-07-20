@@ -4,6 +4,7 @@ import (
 	"github.com/gin-gonic/gin"
 	ginSwagger "github.com/swaggo/gin-swagger"
 	"github.com/swaggo/gin-swagger/swaggerFiles"
+	"go-admin/apis/graphql"
 	log2 "go-admin/apis/log"
 	"go-admin/apis/monitor"
 	"go-admin/apis/system"
@@ -25,12 +26,20 @@ func InitSysRouter(r *gin.Engine, authMiddleware *jwt.GinJWTMiddleware) *gin.Rou
 	// swagger；注意：生产环境可以注释掉
 	sysSwaggerRouter(g)
 
+	// graphql page
+	GraphqlRouter(g)
+
 	// 无需认证
 	sysNoCheckRoleRouter(g)
 	// 需要认证
 	sysCheckRoleRouterInit(g, authMiddleware)
 
 	return g
+}
+
+func GraphqlRouter(r *gin.RouterGroup) {
+	r.POST("/graphql", graphql.GraphqlHandler())
+	r.GET("/graphql", graphql.GraphqlHandler())
 }
 
 func sysBaseRouter(r *gin.RouterGroup) {
